@@ -16,7 +16,7 @@ Twitter Heatmap is an interactive data visualization tool to display and analyze
 * Twitter API to get tweet data
 
 ### Wireframe
-![alt-text](http://res.cloudinary.com/dqhhpt0sj/image/upload/v1512172417/Screen_Shot_2017-12-01_at_3.49.37_PM_x1xkmf.png)
+![alt-text](http://res.cloudinary.com/dqhhpt0sj/image/upload/v1512407192/Twitter_Heatmap_mastu4.png)
 
 ### Timeline
 * Day 1
