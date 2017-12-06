@@ -41,6 +41,30 @@ function initMap(){
         "stylers": [
           {
             "color": "#757575"
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "saturation": 5
+          },
+          {
+            "lightness": -40
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.country",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "simplified"
           }
         ]
       },
@@ -50,6 +74,12 @@ function initMap(){
         "stylers": [
           {
             "color": "#9e9e9e"
+          },
+          {
+            "saturation": -5
+          },
+          {
+            "lightness": -40
           }
         ]
       },
@@ -71,6 +101,52 @@ function initMap(){
         ]
       },
       {
+        "featureType": "administrative.neighborhood",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.neighborhood",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.neighborhood",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "lightness": -45
+          },
+          {
+            "visibility": "on"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
         "featureType": "poi",
         "elementType": "labels.text.fill",
         "stylers": [
@@ -80,28 +156,11 @@ function initMap(){
         ]
       },
       {
-        "featureType": "poi.business",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
         "featureType": "poi.park",
         "elementType": "geometry",
         "stylers": [
           {
             "color": "#181818"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "labels.text",
-        "stylers": [
-          {
-            "visibility": "off"
           }
         ]
       },
@@ -125,10 +184,36 @@ function initMap(){
       },
       {
         "featureType": "road",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
         "elementType": "geometry.fill",
         "stylers": [
           {
             "color": "#2c2c2c"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
           }
         ]
       },
@@ -169,6 +254,24 @@ function initMap(){
       },
       {
         "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
         "elementType": "labels",
         "stylers": [
           {
@@ -204,6 +307,14 @@ function initMap(){
       },
       {
         "featureType": "transit",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
         "elementType": "labels.text.fill",
         "stylers": [
           {
@@ -217,6 +328,15 @@ function initMap(){
         "stylers": [
           {
             "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "off"
           }
         ]
       },
@@ -243,11 +363,24 @@ function initMap(){
   map.setMapTypeId('styled_map');
 
   var heatmap;
+  var grad = [
+  'rgba(36, 106, 140, 0.1)',
+  'rgba(69, 122, 197, 0.8)',
+  'rgba(90, 137, 203, 0.8)',
+  'rgba(110, 152, 210, 0.8)',
+  'rgba(152, 181, 223, 0.8)',
+  'rgba(172, 196, 229, 0.8)',
+  'rgba(193, 210, 235, 0.8)',
+  'rgba(213, 225, 214, 0.8)',
+  'rgba(234, 240, 248, 0.9)',
+  'rgba(255, 255, 255, 0.9)'
+  ];
   var tweetStream = new google.maps.MVCArray([]);
   heatmap = new google.maps.visualization.HeatmapLayer ({
     data: tweetStream,
-    radius: 20,
-    opacity: 0.7
+    radius: 12,
+    opacity: 0.8,
+    gradient: grad
   });
   heatmap.setMap(map);
 
