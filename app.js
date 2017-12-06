@@ -34,7 +34,7 @@ var currentStream = null;
 io.on('connection', function(socket) {
   console.log('Connected!');
   socket.emit('init');
-  // socket.on('start tweets', function() {
+  socket.on('start tweets', function() {
     if (currentStream === null) {
       twitter.stream('statuses/filter', {'locations':'-180,-90,180,90'}, function(stream){
         currentStream = stream;
@@ -42,7 +42,6 @@ io.on('connection', function(socket) {
                 console.log(error);
             });
         currentStream.on('data', function(data) {
-          // console.log(data);
           if (data.coordinates) {
             if (data.coordinates !== null) {
               var tweetOutput = {"lat": data.coordinates.coordinates[0],"lng": data.coordinates.coordinates[1]};
@@ -54,6 +53,6 @@ io.on('connection', function(socket) {
         });
       });
     }
-  // });
+  });
   socket.emit('connected');
 });
