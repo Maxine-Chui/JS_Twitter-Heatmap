@@ -1,0 +1,29 @@
+{
+  "name": "twitter_heatmap",
+  "version": "1.0.0",
+  "description": "## Summary",
+  "main": "twitter_heatmap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxine-Chui/JS_Twitter-Heatmap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maxine-Chui/JS_Twitter-Heatmap/issues"
+  },
+  "homepage": "https://github.com/Maxine-Chui/JS_Twitter-Heatmap#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4",
+    "twit": "^2.2.9",
+    "twitter": "^1.7.1",
+    "twitter-node-client": "0.0.6",
+    "twitter-stream-api": "^0.5.2",
+    "webpack": "^3.10.0"
+  }
+}
