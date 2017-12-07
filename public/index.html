@@ -4,17 +4,7 @@
     <meta charset="utf-8">
     <meta name='viewport' content='width=device-width,initial-scale=0.1' />
     <title>Twitter Heatmap</title>
-    <style media="screen">
-      #map {
-        height: 600px;
-        width: 100%;
-      }
-      html, body {
-        height: 90%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMi2fDeIUk6NxNjFeyHEebaeEmku5OSBo&libraries=visualization&callback=initMap" type="text/javascript">
     </script>
@@ -25,18 +15,17 @@
   <body>
     <h1>Twitter Heatmap</h1>
 
+    <form class="search">
+      <input id="query" placeholder="Search a hashtag"></input>
+      <input id="submit" type="submit" name="" value="Enter"></input>
+    </form>
     <div class="container">
-      <form class="search">
-        <input id="query" placeholder="Type a keyword..."></input>
-        <input id="submit" type="submit" name="" value="Search"></input>
-      </form>
 
       <div id="map"></div>
 
-    </div>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <ul class="tweets"></ul>
+    <ul class="tweets">
       <script>
       // var regexp = /((ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/gi;
       var socket = io.connect('http://localhost:3000');
@@ -48,5 +37,7 @@
 
       });
       </script>
+      </ul>
+    </div>
   </body>
 </html>

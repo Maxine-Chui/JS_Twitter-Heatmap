@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 700px;
+  width: 80%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  }
+
+ul {
+  list-style: none;
+  padding-left: 10px;
+  padding-top: 0;
+}
+
+.tweets {
+  width: 250px;
+}
+
+.tweets li {
+  padding-bottom: 5px;
+}
