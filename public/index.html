@@ -13,13 +13,17 @@
     <script src="./js/three.min.js" type="text/javascript"></script>
   </head>
   <body>
-    <h1>Twitter Heatmap</h1>
-
+    <div class="header">
+      <h1>Twitter Heatmap</h1>
+      <div class="blurb">Realtime tweets from around the world</div>
+    </div>
+    <div class="container">
+      <div class="about">Twitter Heatmap streams realtime tweets using Twitter Streaming API and maps the coordinates of where the tweets are coming from onto a map. A heatmap is generated based on the concentration of tweets coming from a specific geolocation. Click on the blue dots to read tweets coming in from around the world!</div>
     <form class="search">
       <input id="query" placeholder="Search a hashtag"></input>
       <input id="submit" type="submit" name="" value="Enter"></input>
     </form>
-    <div class="container">
+    <div class="body-container">
 
       <div id="map"></div>
 
@@ -39,5 +43,6 @@
       </script>
       </ul>
     </div>
+  </div>
   </body>
 </html>

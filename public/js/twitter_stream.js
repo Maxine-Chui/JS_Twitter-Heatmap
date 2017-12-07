@@ -380,11 +380,12 @@ function initMap(){
 
   heatmap = new google.maps.visualization.HeatmapLayer ({
     data: tweetLocationStream,
-    radius: 12,
+    radius: 14,
     opacity: 0.8,
     gradient: grad
   });
   heatmap.setMap(map);
+
 
   if (io!== undefined) {
     var socket = io.connect('http://localhost:3000');
@@ -396,15 +397,25 @@ function initMap(){
       // let tweetsPerMin = tweetStream.length / 60;
       // console.log(tweetsPerMin);
 
+      let tweetContent = '<div id="content">' + data.username + ':' + data.text + '</div>'
+
+      let infowindow = new google.maps.InfoWindow({
+        content: tweetContent,
+        maxWidth: 100
+      });
+
       let tweetDot = './css/smalldot-largedot.png';
       let marker = new google.maps.Marker({
         position: tweetLocation,
         map: map,
-        icon: tweetDot
+        icon: tweetDot,
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
       });
       setTimeout(() => {
         marker.setMap(null);
-      }, 500);
+      }, 2000);
 
       // tweetContentStream.push({[data.username]: data.text});
       // console.log(tweetContentStream);

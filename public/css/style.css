@@ -9,7 +9,7 @@ html, body {
   width: 80%;
 }
 
-.container {
+.body-container {
   display: flex;
   flex-direction: row;
   }
