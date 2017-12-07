@@ -24,7 +24,7 @@ plugins = plugins.concat(
 
 module.exports = {
   context: __dirname,
-  entry: "./app/assets/javascripts/twitter_heatmap.js",
+  entry: "./public/js/twitter_stream.js",
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"

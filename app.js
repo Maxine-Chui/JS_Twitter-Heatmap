@@ -33,25 +33,29 @@ var currentStream = null;
 
 io.on('connection', function(socket) {
   console.log('Connected!');
-  socket.emit('init');
   socket.on('start tweets', function() {
     if (currentStream === null) {
-      twitter.stream('statuses/filter', {'locations':'-180,-90,180,90'}, function(stream){
-        currentStream = stream;
-        currentStream.on('error', function(error) {
-                console.log(error);
-            });
-        currentStream.on('data', function(data) {
-          if (data.coordinates) {
-            if (data.coordinates !== null) {
-              var tweetOutput = {"lat": data.coordinates.coordinates[0],"lng": data.coordinates.coordinates[1]};
-              socket.broadcast.emit("twitter-stream", tweetOutput);
-              socket.emit('twitter-stream', tweetOutput);
-              console.log(tweetOutput);
+
+        twitter.stream('statuses/filter', {'locations':'-180,-90,180,90'}, function(stream){
+          // if (currentStream) {
+          //   currentStream.destroy();
+          // }
+          currentStream = stream;
+          currentStream.on('data', function(data) {
+            if (data.coordinates) {
+              if (data.coordinates !== null) {
+                var tweet = {"username": data.user.screen_name, "text": data.text, "hashtags": data.entities.hashtags, "lat": data.coordinates.coordinates[0],"lng": data.coordinates.coordinates[1]};
+                socket.broadcast.emit("twitter-stream", tweet);
+                socket.emit('twitter-stream', tweet);
+                console.log(tweet);
+                // console.log(data);
+              }
             }
-          }
+          });
+          currentStream.on('error', function(error) {
+            console.log(error);
+          });
         });
-      });
     }
   });
   socket.emit('connected');
