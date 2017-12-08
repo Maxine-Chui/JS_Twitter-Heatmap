@@ -404,7 +404,12 @@ function initMap(){
       // let tweetsPerMin = tweetStream.length / 60;
       // console.log(tweetsPerMin);
 
-      let tweetContent = '<div id="content">' + data.username + ': ' + data.text + '</div>'
+      let tweetContent = '<div id="content">' + '<div id="prof-info">' +
+      `<img id="prof-pic" src="${data.profile_pic}"/>` + '<div id="prof-names">' +
+      '<div id="name">' + data.name + '</div>'+
+      '<div id="username">' + '@' + data.username + '</div>' + '</div>' + '</div>' +
+      data.text +
+      '</div>';
 
       let infowindow = new google.maps.InfoWindow({
         content: tweetContent,
@@ -423,11 +428,22 @@ function initMap(){
       setTimeout(() => {
         marker.setMap(null);
       }, 2500);
+      });
 
+      google.maps.event.addListener(map, 'click', function() {
+        infowindow.close();
+      });
+
+      // google.maps.event.addListener(infowindow, 'domready', function() {
+      //   var iwOuter = $('.info-window');
+      //   var iwBackground = iwOuter.prev();
+      //   // iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+      //   iwBackground.children.css({'display' : 'none'});
+      // });
       // tweetContentStream.push({[data.username]: data.text});
       // console.log(tweetContentStream);
 
-    });
+
 
     socket.on('connected', function(res){
       socket.emit('start tweets');

@@ -98,7 +98,51 @@ ul {
 .tweets li {
   padding-bottom: 20px;
 }
+.info-window {
+  width: 200px;
+  top: 15px;
+  left: 0px;
+  background-color: rgba(105,105,105,0.2);
+}
+/*#prof-info {
+  display: flex;
+  flex-direction: row;
+}*/
+
+/*#prof-name {
+  display: flex;
+  flex-direction: column;
+}*/
 
 #content {
   color: black;
+}
+
+#prof-info {
+  display: flex;
+  flex-direction: row;
+}
+
+#prof-names {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+#prof-pic{
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+}
+
+#name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#username {
+  font-weight: 100;
+  font-size: 12px;
+  padding-bottom: 5px;
 }

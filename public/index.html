@@ -23,7 +23,7 @@
       <div class="header-container">
         <h1>Twitter Pulse</h1>
         <div id="blurb">Realtime tweets from around the world.</div>
-        <div id="about">Twitter Pulse streams realtime tweets using Twitter Streaming API and maps the coordinates of where the tweets are coming from onto a map. A heatmap is generated based on the concentration of tweets coming from a specific geolocation. Click on the blue dots to read tweets coming in from around the world!</div>
+        <div id="about">Twitter Pulse streams realtime tweets using Twitter Streaming API and maps the coordinates of where the tweets are coming. A heatmap is generated based on the concentration of tweets coming from a specific geolocation. Click on the blue dots to read tweets coming in from around the world!</div>
       </div>
 
 
@@ -38,7 +38,12 @@
           jQuery(function($) {
             var tweetContent = $('ul.tweets');
             socket.on('twitter-stream', function(data){
-            tweetContent.prepend('<li>' + data.username + ': ' + data.text + '</li>');
+              tweetContent.prepend('<li>' + '<div id="prof-info">' +
+              `<img id="prof-pic" src="${data.profile_pic}"/>` + '<div id="prof-names">' +
+              '<div id="name">' + data.name + '</div>'+
+              '<div id="username">' + '@' + data.username + '</div>' + '</div>' + '</div>' +
+              data.text + '</li>');
+            // tweetContent.prepend('<li>' + '@' + data.username + ': ' + data.text + '</li>');
           });
 
         });
