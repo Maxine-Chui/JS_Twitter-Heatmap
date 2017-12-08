@@ -11,6 +11,10 @@ server.listen(port);
 
 app.use('/', express.static(__dirname + '/public'));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './index.html'));
+});
+
 var twitter = new _twitter({
   "consumer_key": "vI0IPUgUv1HSK7SokVULdpVgf",
   "consumer_secret": "oY5zZbVCZSRQXuGsFn1T6lYjyoTMPUXR7V8mzTatMZ49hOqAXL",
