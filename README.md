@@ -1,36 +1,23 @@
-# Twitter Heatmap
+# Twitter Pulse
 
 ## Summary
 
-Twitter Heatmap is an interactive data visualization tool to display and analyze twitter hashtags based on geolocation.
+Twitter Pulse is an interactive data visualization tool to display tweet content based on geolocation. Visit the app here: https://twitter-pulse.herokuapp.com/
 
 
-### Functionality & MVP
-* Users will be able to zoom into different areas of the globe and filter by hashtags and/or topic
-* Analytics section showing top tweets in the last 24 hrs
-* An 'About' section describing the project
+### Features
+* Users can zoom into different areas of the globe and read specific tweets coming from that location in realtime
+* Tweet streaming feature showcases tweet content
+* Heatmap showcases concentration/density of tweets from certain areas
 
 ### Technologies
 * Vanilla JS
-* D3.js for data visuals
-* Twitter API to get tweet data
+* Twitter Streaming API
 * Google Maps API
 
 ### Wireframe
-![alt-text](http://res.cloudinary.com/dqhhpt0sj/image/upload/v1512407839/Twitter_Heatmap_zdyynp.png)
+![alt-text](http://res.cloudinary.com/dqhhpt0sj/image/upload/v1512763277/Screen_Shot_2017-12-08_at_12.00.38_PM_vn4cf6.png)
 
-### Timeline
-* Day 1
-    * Complete set up (Node and webpack)
-    * Review JS and learn enough D3 to get an idea of how to get started
-* Day 2
-    * Learn Twitter API to fetch necessary data
-    * Build the map and begin populating data
-* Day 3
-    * Have a functional screen with filters and data and user can interact with the model
-* Day 4
-    * Styling and finishing touches
-
-### Bonus Features
+### Bonus Features (future)
+* Add a hashtag search and filter incoming tweets based on hashtag
 * Showing top-trending and relevant news events relating to the tweet
-* Users can filter by time (one week ago, 6 months ago, or a date range). Current idea is to only have the last 24 hrs of data
