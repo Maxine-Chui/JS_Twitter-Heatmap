@@ -393,7 +393,7 @@ function initMap(){
 
   if (io!== undefined) {
     // var socket = io.connect('https://localhost:8000');
-    var socket = io.connect('https://twitter-pulse.herokuapp.com:8000/');
+    var socket = io.connect('https://twitter-pulse.herokuapp.com/');
     socket.on('twitter-stream', function(data){
       if (data.hashtags.length > 0) {
         let tweetHashtags = data.hashtags.map(tag => {return tag.text;});
