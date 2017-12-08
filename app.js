@@ -16,10 +16,10 @@ app.get('/', (req, res) => {
 });
 
 var twitter = new _twitter({
-  "consumer_key": "vI0IPUgUv1HSK7SokVULdpVgf",
-  "consumer_secret": "oY5zZbVCZSRQXuGsFn1T6lYjyoTMPUXR7V8mzTatMZ49hOqAXL",
-  "access_token_key": "937844271801024512-kcRwtpUkUFYO7qQicUyxvUYk6xABCJC",
-  "access_token_secret": "BAMOJuV7fKz5tSUHtuO4rTCR4LX4WiQHkc1ApRaqsjhBs",
+  "consumer_key": process.env.TWITTER_CONSUMER_KEY,
+  "consumer_secret": process.env.TWITTER_CONSUMER_SECRET,
+  "access_token_key": process.env.TWITTER_ACCESS_TOKEN,
+  "access_token_secret": process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
 
