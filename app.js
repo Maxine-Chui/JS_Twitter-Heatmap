@@ -20,6 +20,8 @@ var twitter = new _twitter({
 var currentStream = null;
 
 io.on('connection', function(socket) {
+  console.log('Connected!');
+  socket.on('disconnect', () => console.log('Disconnected'));
   socket.on('start tweets', function() {
     if (currentStream === null) {
 
