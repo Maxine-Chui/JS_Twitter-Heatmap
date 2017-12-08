@@ -34,7 +34,7 @@
         <script>
 
         // var socket = io.connect('https://localhost:8000');
-        var socket = io.connect('https://twitter-pulse.herokuapp.com:80/');
+        var socket = io.connect('https://twitter-pulse.herokuapp.com:8000/');
           jQuery(function($) {
             var tweetContent = $('ul.tweets');
             socket.on('twitter-stream', function(data){
