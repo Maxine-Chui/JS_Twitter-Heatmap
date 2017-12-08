@@ -44,7 +44,15 @@ io.on('connection', function(socket) {
           currentStream.on('data', function(data) {
             if (data.coordinates) {
               if (data.coordinates !== null) {
-                var tweet = {"username": data.user.screen_name, "profile_pic": data.profile_image_url_https, "text": data.text, "hashtags": data.entities.hashtags, "lat": data.coordinates.coordinates[0],"lng": data.coordinates.coordinates[1]};
+                var tweet = {
+                  "name": data.user.name,
+                  "username": data.user.screen_name,
+                  "profile_pic": data.user.profile_image_url_https,
+                  "text": data.text,
+                  "hashtags": data.entities.hashtags,
+                  "lat": data.coordinates.coordinates[0],
+                  "lng": data.coordinates.coordinates[1]
+                };
                 socket.broadcast.emit("twitter-stream", tweet);
                 socket.emit('twitter-stream', tweet);
                 console.log(tweet);

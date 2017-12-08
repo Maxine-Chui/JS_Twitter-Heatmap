@@ -354,6 +354,13 @@ function initMap(){
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: {lat: 20, lng: 0},
+    mapTypeControl: false,
+    fullscreenControl: false,
+    streetViewControl: false,
+    zoomControl: false,
+    // zoomControlOptions: {
+    //   position: google.maps.ControlPosition.BOTTOM_RIGHT
+    // },
     mapTypeControlOptions: {
       mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
     }
@@ -372,15 +379,15 @@ function initMap(){
   'rgba(172, 196, 229, 0.8)',
   'rgba(193, 210, 235, 0.8)',
   'rgba(213, 225, 214, 0.8)',
-  'rgba(234, 240, 248, 0.9)',
-  'rgba(255, 255, 255, 0.9)'
+  'rgba(234, 240, 248, 0.8)',
+  'rgba(255, 255, 255, 0.8)'
   ];
   var tweetLocationStream = new google.maps.MVCArray([]);
   // var tweetContentStream = [];
 
   heatmap = new google.maps.visualization.HeatmapLayer ({
     data: tweetLocationStream,
-    radius: 14,
+    radius: 12,
     opacity: 0.8,
     gradient: grad
   });
@@ -397,11 +404,11 @@ function initMap(){
       // let tweetsPerMin = tweetStream.length / 60;
       // console.log(tweetsPerMin);
 
-      let tweetContent = '<div id="content">' + data.username + ':' + data.text + '</div>'
+      let tweetContent = '<div id="content">' + data.username + ': ' + data.text + '</div>'
 
       let infowindow = new google.maps.InfoWindow({
         content: tweetContent,
-        maxWidth: 100
+        maxWidth: 150
       });
 
       let tweetDot = './css/smalldot-largedot.png';
@@ -415,7 +422,7 @@ function initMap(){
       });
       setTimeout(() => {
         marker.setMap(null);
-      }, 2000);
+      }, 2500);
 
       // tweetContentStream.push({[data.username]: data.text});
       // console.log(tweetContentStream);
