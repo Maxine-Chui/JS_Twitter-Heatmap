@@ -18,23 +18,9 @@ html, body {
   height: 900px;
   width: 100%;
   position: absolute;
-  /*z-index: 0;*/
 }
 
-/*.body-container {
-  width: 100%;
-  height: 900px;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  justify-content: space-between;
-  z-index: 2;
-  margin-right: 12px;
-}*/
-
 .header-container {
-  /*font-family: 'Jura', sans-serif;*/
-  /*font-size: 20px;*/
   height: 900px;
   text-align: left;
   width: 250px;
@@ -104,15 +90,6 @@ ul {
   left: 0px;
   background-color: rgba(105,105,105,0.2);
 }
-/*#prof-info {
-  display: flex;
-  flex-direction: row;
-}*/
-
-/*#prof-name {
-  display: flex;
-  flex-direction: column;
-}*/
 
 #content {
   color: black;
@@ -126,7 +103,7 @@ ul {
 #prof-names {
   display: flex;
   flex-direction: column;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-top: 5px;
 }
 

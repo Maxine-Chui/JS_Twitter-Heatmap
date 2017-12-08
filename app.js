@@ -5,10 +5,6 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-
-// console.log(server);
-// console.log(io);
-
 server.listen(3000);
 
 app.use('/', express.static(__dirname + '/public'));
@@ -20,26 +16,14 @@ var twitter = new _twitter({
   "access_token_secret": "BAMOJuV7fKz5tSUHtuO4rTCR4LX4WiQHkc1ApRaqsjhBs",
 });
 
-// twitter.post('statuses/update', {status: 'Goodbye'}, function(err, res) {
-//   if (err) {
-//     console.log(err);
-//
-//   } else {
-//     console.log(res);
-//   }
-// });
 
 var currentStream = null;
 
 io.on('connection', function(socket) {
-  console.log('Connected!');
   socket.on('start tweets', function() {
     if (currentStream === null) {
 
         twitter.stream('statuses/filter', {'locations':'-180,-90,180,90'}, function(stream){
-          // if (currentStream) {
-          //   currentStream.destroy();
-          // }
           currentStream = stream;
           currentStream.on('data', function(data) {
             if (data.coordinates) {
@@ -55,13 +39,8 @@ io.on('connection', function(socket) {
                 };
                 socket.broadcast.emit("twitter-stream", tweet);
                 socket.emit('twitter-stream', tweet);
-                console.log(tweet);
-                // console.log(data);
               }
             }
-          });
-          currentStream.on('error', function(error) {
-            console.log(error);
           });
         });
     }

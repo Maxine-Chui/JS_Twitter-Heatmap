@@ -358,9 +358,6 @@ function initMap(){
     fullscreenControl: false,
     streetViewControl: false,
     zoomControl: false,
-    // zoomControlOptions: {
-    //   position: google.maps.ControlPosition.BOTTOM_RIGHT
-    // },
     mapTypeControlOptions: {
       mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain', 'styled_map']
     }
@@ -383,7 +380,7 @@ function initMap(){
   'rgba(255, 255, 255, 0.8)'
   ];
   var tweetLocationStream = new google.maps.MVCArray([]);
-  // var tweetContentStream = [];
+  var tweetHashtagStream = new google.maps.MVCArray([]);
 
   heatmap = new google.maps.visualization.HeatmapLayer ({
     data: tweetLocationStream,
@@ -396,13 +393,14 @@ function initMap(){
 
   if (io!== undefined) {
     var socket = io.connect('http://localhost:3000');
-    console.log('Also connected!');
     socket.on('twitter-stream', function(data){
+      if (data.hashtags.length > 0) {
+        let tweetHashtags = data.hashtags.map(tag => {return tag.text;});
+        tweetHashtagStream.push(tweetHashtags);
+      }
+
       let tweetLocation = new google.maps.LatLng(data.lng, data.lat);
       tweetLocationStream.push(tweetLocation);
-
-      // let tweetsPerMin = tweetStream.length / 60;
-      // console.log(tweetsPerMin);
 
       let tweetContent = '<div id="content">' + '<div id="prof-info">' +
       `<img id="prof-pic" src="${data.profile_pic}"/>` + '<div id="prof-names">' +
@@ -430,28 +428,9 @@ function initMap(){
       }, 2500);
       });
 
-      google.maps.event.addListener(map, 'click', function() {
-        infowindow.close();
-      });
-
-      // google.maps.event.addListener(infowindow, 'domready', function() {
-      //   var iwOuter = $('.info-window');
-      //   var iwBackground = iwOuter.prev();
-      //   // iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-      //   iwBackground.children.css({'display' : 'none'});
-      // });
-      // tweetContentStream.push({[data.username]: data.text});
-      // console.log(tweetContentStream);
-
-
-
     socket.on('connected', function(res){
       socket.emit('start tweets');
     });
   }
-
-  // function tweetsPerMinute(tweetStream) {
-  //   return tweetStream.length / 60;
-  // }
 
 }
