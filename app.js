@@ -1,11 +1,13 @@
 const _twitter = require('twitter');
 var express = require('express');
+var path = require('path');
 var app = express();
 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-server.listen(3000);
+const port = process.env.PORT || 8000;
+server.listen(port);
 
 app.use('/', express.static(__dirname + '/public'));
 
