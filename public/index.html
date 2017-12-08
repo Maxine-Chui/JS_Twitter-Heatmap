@@ -33,7 +33,7 @@
       <ul class="tweets">
         <script>
 
-        var socket = io.connect('http://localhost:8000');
+        var socket = io.connect('https://localhost:8000');
           jQuery(function($) {
             var tweetContent = $('ul.tweets');
             socket.on('twitter-stream', function(data){
